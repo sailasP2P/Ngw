@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Loan Application Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>QuickLoan Portal</h1>
+      <p>Fast & Reliable Loan Inquiry</p>
+    </header>
+
+    <!-- STEP 1: LOAN SELECTION & DETAILS -->
+    <div id="step1" class="step active">
+      <h2>Step 1: Loan Details</h2>
+      
+      <div class="form-group">
+        <label for="loanAmount">Select Loan Amount: <span id="amountDisplay">50,000</span></label>
+        <input type="range" id="loanAmount" min="5000" max="500000" step="5000" value="50000">
+      </div>
+
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number (with Country Code)</label>
+        <input type="tel" id="phoneNumber" required placeholder="e.g. +255 68X XXX XXX">
+      </div>
+
+      <div class="form-group">
+        <label for="loanPurpose">Purpose of Loan</label>
+        <select id="loanPurpose" required>
+          <option value="">Choose purpose...</option>
+          <option value="Business Expansion">Business Expansion</option>
+          <option value="Emergency">Emergency</option>
+          <option value="Personal Use">Personal Use</option>
+          <option value="Education">Education</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="goToStep2()">Next: Review Details</button>
+    </div>
+
+    <!-- STEP 2: REVIEW & SUBMIT -->
+    <div id="step2" class="step">
+      <h2>Step 2: Review & Submit</h2>
+      <div class="summary-box">
+        <p><strong>Name:</strong> <span id="reviewName"></span></p>
+        <p><strong>Phone:</strong> <span id="reviewPhone"></span></p>
+        <p><strong>Amount:</strong> <span id="reviewAmount"></span></p>
+        <p><strong>Purpose:</strong> <span id="reviewPurpose"></span></p>
+      </div>
+
+      <p class="note">Click below to send your application directly for review:</p>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-telegram" onclick="submitToTelegram()">Submit via Telegram</button>
+        <button type="button" class="btn btn-whatsapp" onclick="submitToWhatsApp()">Submit via WhatsApp</button>
+        <button type="button" class="btn btn-secondary" onclick="goToStep1()">Back to Edit</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: FINAL CONFIRMATION PAGE -->
+    <div id="step3" class="step">
+      <div class="success-icon">✓</div>
+      <h2>Application Sent!</h2>
+      <p>Your request for <strong id="finalAmount"></strong> has been submitted.</p>
+      <p class="note">Our team will review your details and contact you shortly.</p>
+      <button type="button" class="btn btn-primary" onclick="resetForm()">Start New Application</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
